@@ -211,8 +211,10 @@ if __name__ == "__main__":
     body_estimation = Body('../model/body_pose_model.pth')
 
     test_image = '../images/ski.jpg'
+    print('loaded img')
     oriImg = cv2.imread(test_image)  # B,G,R order
     candidate, subset = body_estimation(oriImg)
     canvas = util.draw_bodypose(oriImg, candidate, subset)
-    plt.imshow(canvas[:, :, [2, 1, 0]])
-    plt.show()
+    print('test')
+    plt.plot(canvas[:, :, [2, 1, 0]])
+    plt.savefig('savefig_default.png')
